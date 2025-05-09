@@ -1,0 +1,43 @@
+# name: CI/CD Pipeline
+
+# # Trigger on any push to main
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   build_and_push:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       # 1. Check out your code
+#       - name: Checkout code
+#         uses: actions/checkout@v3
+
+#       # 2. Log in to Docker Hub
+#       - name: Log in to Docker Hub
+#         uses: docker/login-action@v2
+#         with:
+#           username: ${{ secrets.DOCKER_HUB_USERNAME }}
+#           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+
+#       # 3. Build & tag backend image
+#       - name: Build backend image
+#         run: |
+#           docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/task-backend:latest ./backend
+
+#       # 4. Push backend image
+#       - name: Push backend image
+#         run: |
+#           docker push ${{ secrets.DOCKER_HUB_USERNAME }}/task-backend:latest
+
+#       # 5. Build & tag frontend image
+#       - name: Build frontend image
+#         run: |
+#           docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/task-frontend:latest ./frontend
+
+#       # 6. Push frontend image
+#       - name: Push frontend image
+#         run: |
+#           docker push ${{ secrets.DOCKER_HUB_USERNAME }}/task-frontend:latest
